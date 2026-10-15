@@ -1,26 +1,27 @@
-/* Переменные для быстрой смены цветов хакера/ИИ */
+
 :root {
-    --bg-dark: #0a0f1d;
-    --card-bg: #111827;
-    --neon-cyan: #00f2fe;
-    --neon-green: #4facfe;
-    --text-main: #e5e7eb;
-    --text-muted: #9ca3af;
-    --border-color: #1f2937;
+    bg-dark: #070b12;
+    card-bg: #0d1527;        /* Фон карточек и блоков */
+    code-bg: #03060c;        /* Черный цвет для терминала кода */
+    neon-cyan: #00f2fe;      /* Основной неоновый голубой */
+    neon-green: #05ffa1;     /* Акцентный матричный зеленый */
+    text-main: #e2e8f0;      /* Светло-серый текст */
+    text-muted: #64748b;     /* Приглушенный текст */
+    border-color: #1e293b;   /* Цвет технологических границ */
 }
 
-* {
+ {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
 body {
-    font-family: 'Courier New', Courier, monospace; /* Моноширинный шрифт для стиля кода */
+    font-family: 'Courier New', Courier, monospace; /* Моноширинный шрифт в стиле хакеров */
     background-color: var(--bg-dark);
     color: var(--text-main);
     line-height: 1.6;
-    overflow-x: hidden;
+    position: relative;
 }
 
 .container {
@@ -30,20 +31,19 @@ body {
     padding: 20px;
 }
 
-/* Элементы шапки */
+
 header {
-    background: linear-gradient(180deg, #0d1527 0%, var(--bg-dark) 100%);
-    border-bottom: 1px solid var(--border-color);
-    padding: 30px 0;
-    position: relative;
+    background: linear-gradient(180deg, #0b1324 0%, var(--bg-dark) 100%);
+    border-bottom: 2px dashed var(--border-color);
+    padding: 40px 0;
 }
 
 .logo {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: bold;
-    letter-spacing: 3px;
-    color: #fff;
-    text-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+    letter-spacing: 4px;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
 }
 
 .logo span {
@@ -53,7 +53,9 @@ header {
 .subtitle {
     color: var(--neon-green);
     font-size: 0.9rem;
-    margin-top: 5px;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .back-link {
@@ -62,34 +64,40 @@ header {
     color: var(--text-muted);
     text-decoration: none;
     font-size: 0.85rem;
-}
-.back-link:hover {
-    color: var(--neon-cyan);
+    transition: color 0.2s ease;
 }
 
-/* Терминал / Описание */
+.back-link:hover {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 5px var(--neon-cyan);
+}
+
+/* ==========================================================================
+   ГЛАВНАЯ СТРАНИЦА: КОНСОЛЬ И СЕТКА КАРТОЧЕК
+   ========================================================================== */
 .terminal-box {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-left: 4px solid var(--neon-cyan);
     padding: 20px;
     border-radius: 4px;
-    margin: 20px 0;
+    margin: 30px 0;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 h2 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: var(--neon-cyan);
     margin-bottom: 15px;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
 }
 
-/* Сетка карточек на главной */
+/* Сетка для вывода лабораторных */
 .labs-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    margin-top: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
 }
 
 .tech-card {
@@ -98,13 +106,14 @@ h2 {
     padding: 25px;
     border-radius: 6px;
     position: relative;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
+/* Эффект наведения на карточку лабы */
 .tech-card:hover {
     transform: translateY(-5px);
     border-color: var(--neon-cyan);
-    box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.25);
 }
 
 .status-online {
@@ -112,10 +121,12 @@ h2 {
     top: 15px;
     right: 15px;
     font-size: 0.7rem;
-    color: #10b981;
-    background: rgba(16, 185, 129, 0.1);
-    padding: 2px 6px;
+    font-weight: bold;
+    color: var(--neon-green);
+    background: rgba(5, 255, 161, 0.1);
+    padding: 2px 8px;
     border-radius: 3px;
+    border: 1px solid rgba(5, 255, 161, 0.2);
 }
 
 .topic-badge {
@@ -123,9 +134,10 @@ h2 {
     font-size: 0.75rem;
     background: rgba(0, 242, 254, 0.1);
     color: var(--neon-cyan);
-    padding: 3px 8px;
+    padding: 4px 10px;
     border-radius: 4px;
-    margin: 10px 0;
+    margin: 15px 0;
+    border: 1px solid rgba(0, 242, 254, 0.2);
 }
 
 .tech-btn {
@@ -134,71 +146,99 @@ h2 {
     color: var(--neon-cyan);
     text-decoration: none;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
 }
 
 .tech-btn:hover {
-    text-decoration: underline;
+    color: #ffffff;
+    text-shadow: 0 0 8px var(--neon-cyan);
 }
 
-/* Двухколоночный макет для внутренних страниц */
+/* ==========================================================================
+   ВНУТРЕННЯЯ СТРАНИЦА ЛАБЫ: ДВУХКОЛОНОЧНЫЙ МАКЕТ
+   ========================================================================== */
 .page-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* Ровно пополам: отчет слева, код справа */
     gap: 30px;
     margin-top: 30px;
 }
 
-@media(max-width: 768px) {
-    .page-layout { grid-template-columns: 1fr; }
+/* Адаптивность для телефонов: перестраиваем в одну колонку */
+@media (max-width: 900px) {
+    .page-layout {
+        grid-template-columns: 1fr;
+    }
 }
 
-/* Раздел отчета */
+/* Стили отчета (Левая сторона) */
 .report-block {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
-    padding: 15px;
-    border-radius: 4px;
-    margin-bottom: 15px;
-}
-.report-block h3 {
-    font-size: 1rem;
-    color: var(--neon-green);
-    margin-bottom: 5px;
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
 }
 
-/* Раздел кода */
+.report-block h3 {
+    font-size: 1.05rem;
+    color: var(--neon-green);
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(5, 255, 161, 0.2);
+    padding-bottom: 5px;
+}
+
+/* Стили Терминала с Кодом (Правая сторона) */
 .code-wrapper {
-    background: #05070f;
+    background: var(--code-bg);
     border: 1px solid var(--border-color);
     border-radius: 6px;
     overflow: hidden;
+    position: sticky; /* Панель с кодом будет плавно оставаться на экране при скролле */
+    top: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
 }
 
 .code-header {
-    background: #0d111c;
-    padding: 10px 15px;
+    background: #090e1a;
+    padding: 12px 20px;
     font-size: 0.8rem;
     color: var(--text-muted);
     border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Эмуляция точек управления окна (как на Mac/Linux) */
+.code-header::after {
+    content: "● ● ●";
+    color: #3b4252;
+    letter-spacing: 2px;
 }
 
 pre {
-    padding: 15px;
-    overflow-x: auto;
+    padding: 20px;
+    overflow-x: auto; /* Прокрутка, если строка кода слишком длинная */
 }
 
 code {
-    color: #38bdf8;
+    color: #38bdf8; /* Голубой цвет шрифта кода */
     font-size: 0.9rem;
+    font-family: 'Consolas', 'Monaco', monospace;
 }
 
-/* Подвал */
+/* ==========================================================================
+   ПОДВАЛ (FOOTER)
+   ========================================================================== */
 footer {
     text-align: center;
-    padding: 30px 0;
+    padding: 40px 0;
     color: var(--text-muted);
     font-size: 0.8rem;
     border-top: 1px solid var(--border-color);
-    margin-top: 5px;
+    margin-top: 60px;
+    letter-spacing: 1px;
 }
+
